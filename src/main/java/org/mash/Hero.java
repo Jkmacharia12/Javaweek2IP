@@ -1,63 +1,50 @@
 package org.mash;
-
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.*;
 public class Hero {
 
-    private String name;
-    private int age;
-    private String specialPower;
-    private String weakness;
+    private String mName;
+    private int mAge;
+    private String mPower;
+    private String mWeakness;
+    private int mId;
 
-    // Constructor
-    public Hero(String name, int age, String specialPower, String weakness){
-        this.name = name;
-        this.age = age;
-        this.specialPower = specialPower;
-        this.weakness = weakness;
+    private static List<Hero> heroes =new ArrayList<>();
+
+    public Hero(String name,int age,String power,String weakness ) {
+        mName = name;
+        mAge = age;
+        mPower = power;
+        mWeakness = weakness;
+        heroes.add(this);
+        mId = heroes.size();
     }
 
-    // Getter methods
-    public String getName(){
-        return name;
+    public String getName() {
+        return mName;
+    }
+    public int getAge() {
+        return mAge;
+    }
+    public String getPower() {
+        return mPower;
     }
 
-    public int getAge(){
-        return age;
+    public String getWeakness() {
+        return mWeakness;
+    }
+    public int getId() {
+        return mId;
     }
 
-    public String getSpecialPower(){
-        return specialPower;
+    public static List<Hero> all() {
+        return heroes;
     }
 
-    public String getWeakness(){
-        return weakness;
+    public static void clear() {
+        heroes.clear();
     }
 
-    // Setter methods
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public void setAge(int age){
-        this.age = age;
-    }
-
-    public void setSpecialPower(String specialPower){
-        this.specialPower = specialPower;
-    }
-
-    public void setWeakness(String weakness){
-        this.weakness = weakness;
-    }
-
-    public void displayHeroDetails(){
-        System.out.println("Name: "+this.name+
-                "\nAge: "+this.age+
-                "\nSpecial Power: "+this.specialPower+
-                "\nWeakness: "+this.weakness);
+    public static Hero find(int id) {
+        return heroes.get(id - 1);
     }
 }
-
-
-
